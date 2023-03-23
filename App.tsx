@@ -1,5 +1,4 @@
-import { StatusBar } from "expo-status-bar";
-import { NativeBaseProvider } from "native-base";
+import { NativeBaseProvider, StatusBar } from "native-base";
 
 import {
   useFonts,
@@ -19,11 +18,7 @@ export default function App() {
 
   return (
     <NativeBaseProvider theme={THEME}>
-      <StatusBar
-        style="light"
-        backgroundColor="transparent"
-        translucent={true}
-      />
+      <StatusBar barStyle="dark-content" backgroundColor="transparent" />
 
       {fontsLoaded ? <Routes /> : <Loading />}
     </NativeBaseProvider>

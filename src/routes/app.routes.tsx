@@ -7,7 +7,7 @@ export function Routes() {
 
   const theme = DefaultTheme;
 
-  theme.colors.background = colors.gray[100];
+  theme.colors.background = colors.white;
 
   return (
     <Box flex={1} bg="gray.100">

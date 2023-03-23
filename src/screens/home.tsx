@@ -10,6 +10,7 @@ import { useEffect, useRef, useState } from "react";
 import { Platform } from "react-native";
 import { RFValue } from "react-native-responsive-fontsize";
 import { CardPost } from "../components/CardPost";
+import { CommentsModal } from "../components/CommentsModal";
 import {
   CustomBottomSheet,
   MyBottonShetHandle,
@@ -39,6 +40,9 @@ export function Home() {
           _limit: 10,
         },
       });
+      // Tem 100 posts, porém são posts repetidos, por isso o limite de 10
+      // Fora que também a API não tem paginação.
+      // Exibir 100 item de uma vez seria não performático
 
       const getUsers = await api.get("/users");
 
@@ -62,6 +66,7 @@ export function Home() {
 
   return (
     <>
+      {/* <CommentsModal id="8" /> */}
       <VStack flex={1} bg="gray.100">
         <HomeHeader />
 
