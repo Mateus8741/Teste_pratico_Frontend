@@ -1,6 +1,4 @@
-import { Avatar, Heading, HStack, Icon, Text, VStack } from "native-base";
-import { MaterialIcons } from "@expo/vector-icons";
-import { TouchableOpacity } from "react-native";
+import { Avatar, Heading, HStack, Text, VStack } from "native-base";
 
 export function HomeHeader() {
   const urlImage =
@@ -23,13 +21,9 @@ export function HomeHeader() {
           Olá,
         </Text>
         <Heading color="gray.100" fontSize="md" fontFamily="heading">
-          Mateus Tavares
+          Jhon Doe
         </Heading>
       </VStack>
-
-      <TouchableOpacity onPress={() => console.log("logOut")}>
-        <Icon as={MaterialIcons} name="logout" color="gray.200" size={7} />
-      </TouchableOpacity>
     </HStack>
   );
 }

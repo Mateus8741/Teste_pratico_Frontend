@@ -9,6 +9,7 @@ import {
 import { THEME } from "./src/theme";
 import { Loading } from "./src/components/Loading";
 import { Routes } from "./src/routes/app.routes";
+import { AppContextProvider } from "./src/context/AppContext";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -18,9 +19,11 @@ export default function App() {
 
   return (
     <NativeBaseProvider theme={THEME}>
-      <StatusBar barStyle="dark-content" backgroundColor="transparent" />
+      <StatusBar barStyle="default" backgroundColor="transparent" translucent />
 
-      {fontsLoaded ? <Routes /> : <Loading />}
+      <AppContextProvider>
+        {fontsLoaded ? <Routes /> : <Loading />}
+      </AppContextProvider>
     </NativeBaseProvider>
   );
 }

@@ -1,32 +1,37 @@
 import {
   Box,
-  Center,
   Stack,
   Heading,
   HStack,
   Text,
   Avatar,
-  VStack,
   Button,
 } from "native-base";
 
-import { MaterialIcons } from "@expo/vector-icons";
+import { MaterialIcons, Octicons } from "@expo/vector-icons";
 import { PostDTO } from "../DTO/postDTO";
+import { RandomColors } from "../utils/RandomColors";
 
 type CardPostProps = PostDTO & {
   onPress: () => void;
+  userName: string;
 };
 
-export function CardPost({ id, userId, title, body, onPress }: CardPostProps) {
+export function CardPost({
+  title,
+  body,
+  onPress,
+  userName,
+}: CardPostProps) {
   function CurrentTime() {
     var date = new Date();
     var hour = date.getHours();
     var min = date.getMinutes();
-    return `postado ás ${hour}:${min}`;
+    return `${hour}:${min}`;
   }
 
   return (
-    <Box alignItems="center" >
+    <Box alignItems="center">
       <Button
         bg="transparent"
         onPress={onPress}
@@ -39,10 +44,10 @@ export function CardPost({ id, userId, title, body, onPress }: CardPostProps) {
           rounded="lg"
           overflow="hidden"
           _dark={{
-            backgroundColor: "gray.700",
+            backgroundColor: "gray.800",
           }}
           _light={{
-            backgroundColor: "gray.100",
+            backgroundColor: "white",
           }}
         >
           <Stack p="4" space={3}>
@@ -81,15 +86,31 @@ export function CardPost({ id, userId, title, body, onPress }: CardPostProps) {
               justifyContent="space-between"
             >
               <HStack alignItems="center">
-                <Text
-                  color="coolGray.500"
-                  _dark={{
-                    color: "warmGray.300",
-                  }}
-                  fontWeight="400"
-                >
-                  {CurrentTime()}
-                </Text>
+                <HStack alignItems="center">
+                  <Avatar bg={RandomColors()} size="sm" alignItems="center">
+                    <MaterialIcons name="person" size={20} color="white" />
+                  </Avatar>
+
+                  <Stack pl="4">
+                    <HStack space={2} alignItems="center">
+                      <Heading size="sm" ml="-1">
+                        {userName}
+                      </Heading>
+
+                      <Octicons name="dot-fill" size={10} color="black" />
+
+                      <Text
+                        color="coolGray.500"
+                        _dark={{
+                          color: "warmGray.300",
+                        }}
+                        fontWeight="400"
+                      >
+                        {CurrentTime()}
+                      </Text>
+                    </HStack>
+                  </Stack>
+                </HStack>
               </HStack>
             </HStack>
           </Stack>
